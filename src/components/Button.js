@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./AddPostBtn.css";
+import "./Button.css";
 
 const AddPostBtn = props => {
   return (
-    <button id="add-post-btn" onClick={props.addNewPost}>
-      ADD POST
+    <button className="main-button" id={props.id} onClick={props.handleClick}>
+      {props.title}
     </button>
   );
 };

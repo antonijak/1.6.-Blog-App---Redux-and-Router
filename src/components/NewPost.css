@@ -1,0 +1,52 @@
+.add-new-post {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.title-and-category {
+  width: 100%;
+  margin: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.textarea-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.new-post-text-label {
+  width: 100%;
+  padding: 1rem 0;
+}
+
+#new-post-title {
+  margin: 0 1rem;
+  font-size: 1rem;
+}
+#select-category-label {
+}
+
+#select-category {
+  font-size: 1rem;
+  margin: 0 1rem;
+}
+
+#new-post-text {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border-color: gray;
+  outline: none;
+}
+
+.new-post-buttons-container {
+  width: 100%;
+}
+
+#save-new-post {
+  margin-right: 2rem;
+}

@@ -1,0 +1,27 @@
+.post-preview {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+}
+
+.post-title {
+  padding: 1rem 0;
+  width: 50%;
+}
+
+.post-category {
+  color: gray;
+  padding: 1rem 0;
+  width: 50%;
+  text-align: right;
+}
+
+.buttons-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+}

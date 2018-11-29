@@ -1,7 +1,14 @@
-#add-post-btn {
+.main-button {
   padding: 1rem 2rem;
   border-radius: 5px;
   font-size: 1rem;
   letter-spacing: 1px;
   background: rgb(213, 245, 213);
+}
+
+#back-to-posts {
+  padding: 1rem 1.5rem;
+}
+
+#delete-post {
 }
