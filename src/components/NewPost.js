@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 import AddPostButton from "./AddPostButton";
 import "./NewPost.css";
+import CustomDropdown from "./CustomDropdown";
 
 const NewPost = props => {
   console.log(props);
@@ -10,8 +11,8 @@ const NewPost = props => {
   return (
     <div className="add-new-post">
       <div className="title-and-category">
-        <label htmlFor="new-post-title">Title:</label>
         <input
+          className="input-default"
           type="text"
           name="title"
           id="new-post-title"
@@ -21,31 +22,18 @@ const NewPost = props => {
             props.handleInput(e);
           }}
         />
-        <label htmlFor="select-category" id="select-category-label">
-          Category:
-        </label>
-        <select
-          name="category"
+        <CustomDropdown
           value={props.newPost.category}
           id="select-category"
-          onChange={e => {
-            props.handleInput(e);
-          }}
-        >
-          <option>Work</option>
-          <option>Speech</option>
-          <option>Recreation</option>
-          <option>Sport</option>
-        </select>
+          handleInput={props.handleInput}
+        />
       </div>
       <div className="textarea-container">
-        <label htmlFor="new-post-text" className="new-post-text-label">
-          Write new post:
-        </label>
         <textarea
           name="text"
           id="new-post-text"
           rows="20"
+          placeholder="Write new post"
           value={props.newPost.text}
           onChange={e => {
             props.handleInput(e);

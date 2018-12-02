@@ -27,7 +27,7 @@ const PostPreview = props => {
 
       <h1 className="post-title">{post.title}</h1>
 
-      <span className="post-category">Category: {post.category}</span>
+      <span className="post-category">{post.category}</span>
 
       <p className="post-text">{post.text}</p>
     </div>

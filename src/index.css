@@ -1,5 +1,16 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --main-border-color: rgb(228, 228, 228);
+  --nav-border-color: rgb(188, 188, 188);
+  --main-backgound-color: rgb(245, 245, 245);
+  --main-text-color: rgb(69, 69, 69);
+}
+
+body {
+  background: var(--main-backgound-color);
 }

@@ -6,8 +6,8 @@ import "./Posts.css";
 
 const Posts = props => {
   return (
-    <div className="home">
-      <Link to="/posts/newpost">
+    <div className="posts">
+      <Link to="/posts/newpost" id="add-post-button">
         <Button title="ADD POST" />
       </Link>
 

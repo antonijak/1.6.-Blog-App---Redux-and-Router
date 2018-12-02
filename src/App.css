@@ -1,15 +1,36 @@
-#main-nav {
-  text-align: center;
-  background: rgb(219, 219, 219);
+.App {
 }
 
-#main-nav ul {
+#main-nav {
+  text-align: center;
   display: flex;
-  justify-content: flex-start;
-  padding: 1rem;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+#main-nav-ul {
+  padding: 0;
+}
+
+#main-nav li:first-child {
+  border-right: 1px solid var(--nav-border-color);
 }
 
 #main-nav li {
-  padding: 0 0.5rem;
   list-style-type: none;
+  display: inline-block;
+}
+
+#main-nav a {
+  text-decoration: none;
+  color: black;
+  padding: 0 1rem;
+}
+
+#main-nav a:hover {
+  color: rgb(9, 9, 180);
+}
+
+a {
+  text-decoration: none;
 }

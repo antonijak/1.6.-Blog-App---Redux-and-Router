@@ -1,8 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./PostImage.css";
 
 const PostImage = props => {
-  return <img src={props.postImage} alt={props.imageDescription} />;
+  return (
+    <img
+      src="https://picsum.photos/500/300"
+      alt={props.imageDescription}
+      className="post-image"
+    />
+  );
 };
 
 export default PostImage;

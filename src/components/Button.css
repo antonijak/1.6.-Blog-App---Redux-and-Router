@@ -1,14 +1,18 @@
 .main-button {
-  padding: 1rem 2rem;
-  border-radius: 5px;
+  padding: 1rem 1rem;
+  border-radius: 2px;
   font-size: 1rem;
   letter-spacing: 1px;
-  background: rgb(213, 245, 213);
+  background: white;
+  -webkit-transition: box-shadow 0.5s;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  border: none;
 }
 
 #back-to-posts {
   padding: 1rem 1.5rem;
 }
 
-#delete-post {
+.main-button:hover {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
 }
