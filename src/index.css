@@ -7,8 +7,13 @@
 :root {
   --main-border-color: rgb(228, 228, 228);
   --nav-border-color: rgb(188, 188, 188);
-  --main-backgound-color: rgb(245, 245, 245);
+  --main-backgound-color: rgb(252, 252, 252);
   --main-text-color: rgb(69, 69, 69);
+  --second-background-color: rgb(245, 245, 245);
+  --input-background-color: rgb(238, 238, 238);
+  --button-border-color: rgb(243, 243, 243);
+  --main-button-color: rgb(72, 8, 200);
+  --second-text-color: rgb(105, 105, 105);
 }
 
 body {

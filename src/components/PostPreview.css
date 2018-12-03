@@ -1,35 +1,73 @@
 .post-preview {
-  padding: 1rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 80%;
+  width: 70%;
   margin: auto;
+  padding-top: 1.5rem;
+  justify-content: flex-end;
+}
+
+.post-body {
+  margin-top: 1.5rem;
+  width: 100%;
+  background: white;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(14, 14, 14, 0.4);
+}
+
+.post-image-container {
+  width: 100%;
+  height: 20rem;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+  border-radius: 2px;
+}
+
+.post-preview-image {
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.title-and-category-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .post-title {
-  padding: 1rem 0;
-  width: 50%;
+  padding: 1.5rem 0;
 }
 
 .post-category {
   color: black;
-  padding: 0.7rem 2rem;
+  padding: 0.7rem 1.5rem;
   width: fit-content;
   height: 2rem;
-  line-height: 0.8rem;
+  line-height: 0.7rem;
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
   text-align: center;
-  background: rgb(240, 240, 240);
+  background: rgb(214, 214, 214);
+  margin: 1.5rem 0;
+}
+
+.post-text {
+  width: 100%;
 }
 
 .buttons-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 2rem 0;
+  padding: 1.5rem 0;
 }

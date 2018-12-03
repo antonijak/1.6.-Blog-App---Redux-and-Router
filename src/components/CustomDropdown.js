@@ -11,9 +11,9 @@ const CustomDropdown = props => {
           props.handleInput(e);
         }}
       >
-        <option>Work</option>
-        <option>Speech</option>
         <option>Recreation</option>
+        <option>Speech</option>
+        <option>Work</option>
         <option>Sport</option>
       </select>
     </div>

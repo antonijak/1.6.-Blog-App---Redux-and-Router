@@ -18,6 +18,7 @@ class App extends Component {
         title: "My day in Integrify",
         category: "Work",
         id: id1.toString(),
+        image: "https://picsum.photos/500/300",
         text:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
       },
@@ -25,6 +26,7 @@ class App extends Component {
         title: "My talk at React Meetup",
         category: "Speech",
         id: id2.toString(),
+        image: "https://picsum.photos/700/300",
         text:
           "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
       },
@@ -32,13 +34,31 @@ class App extends Component {
         title: "It is a long established fact that a reader will be distracted",
         category: "Some category",
         id: "2",
+        image: "https://picsum.photos/600/300",
         text:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting. Remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting. Remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting. Remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
       },
       {
         title: "This is one long title for blog",
         category: "Recreation",
         id: "1",
+        image: "https://picsum.photos/400/300",
+        text:
+          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+      },
+      {
+        title: "This is one long title for blog",
+        category: "Recreation",
+        id: "1",
+        image: "https://picsum.photos/800/300",
+        text:
+          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+      },
+      {
+        title: "This is one long title for blog",
+        category: "Recreation",
+        id: "1",
+        image: "https://picsum.photos/900/300",
         text:
           "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
       }
@@ -46,6 +66,7 @@ class App extends Component {
     newPost: {
       title: "",
       category: "Work",
+      image: "",
       text: ""
     }
   };
@@ -59,17 +80,24 @@ class App extends Component {
   };
 
   addPost = () => {
-    console.log("triggered");
-
     let title = this.state.newPost.title;
     let category = this.state.newPost.category;
     let text = this.state.newPost.text;
+    let image = this.state.newPost.image;
     let id = require("uuid/v4");
+    if (
+      image === "" ||
+      !image.match(
+        /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/
+      )
+    ) {
+      image = "https://picsum.photos/500/300";
+    }
 
     if (title !== "" && category !== "" && text !== "") {
       this.setState({
-        posts: [...this.state.posts, { title, category, id, text }],
-        newPost: { title: "", category: "Work", text: "" }
+        posts: [...this.state.posts, { title, category, id, image, text }],
+        newPost: { title: "", category: "Work", text: "", image: "" }
       });
     }
   };

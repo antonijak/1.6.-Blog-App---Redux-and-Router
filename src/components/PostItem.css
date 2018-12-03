@@ -20,7 +20,7 @@
   width: 100%;
   text-align: left;
   padding: 1.5rem 2.2rem;
-  background: var(--main-backgound-color);
+  background: var(--second-background-color);
   height: 25%;
   font-weight: normal;
 }

@@ -3,10 +3,8 @@ import PropTypes from "prop-types";
 import "./Button.css";
 
 const Button = props => {
-  console.log("button", props);
-
   return (
-    <button className="main-button" id={props.id}>
+    <button className="main-button" id={props.id} onClick={props.handleClick}>
       {props.title}
     </button>
   );

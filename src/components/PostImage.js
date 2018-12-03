@@ -5,7 +5,7 @@ import "./PostImage.css";
 const PostImage = props => {
   return (
     <img
-      src="https://picsum.photos/500/300"
+      src={props.imageSource}
       alt={props.imageDescription}
       className="post-image"
     />

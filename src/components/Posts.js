@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button";
+import AddPostButton from "./AddPostButton";
 import PostItem from "./PostItem";
 import { Link } from "react-router-dom";
 import "./Posts.css";
@@ -8,7 +8,7 @@ const Posts = props => {
   return (
     <div className="posts">
       <Link to="/posts/newpost" id="add-post-button">
-        <Button title="ADD POST" />
+        <AddPostButton title="ADD POST" />
       </Link>
 
       {props.posts.map((post, i) => (
@@ -17,7 +17,12 @@ const Posts = props => {
           className="post-item-container"
           key={i + "key"}
         >
-          <PostItem title={post.title} category={post.category} id={post.id} />
+          <PostItem
+            title={post.title}
+            category={post.category}
+            id={post.id}
+            imageSource={post.image}
+          />
         </Link>
       ))}
     </div>

@@ -1,18 +1,44 @@
 .main-button {
-  padding: 1rem 1rem;
-  border-radius: 2px;
+  padding: 0.8rem 2rem;
+  border-radius: 3px;
   font-size: 1rem;
-  letter-spacing: 1px;
+  letter-spacing: 3px;
   background: white;
   -webkit-transition: box-shadow 0.5s;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 5px rgba(14, 14, 14, 0.4);
+  border: none;
+  width: 8rem;
+  outline: none;
+  background: var(--main-button-color);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
   border: none;
 }
 
-#back-to-posts {
-  padding: 1rem 1.5rem;
+.main-button:hover {
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.4);
+  color: rgb(202, 172, 255);
 }
 
-.main-button:hover {
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+#back-to-posts {
+  width: 10.5rem;
+  background: inherit;
+  box-shadow: none;
+  color: var(--main-button-color);
+  padding: 0;
+  text-align: right;
+}
+
+#back-to-posts:hover {
+  color: rgb(125, 50, 255);
+}
+
+#delete-post {
+  margin-top: 1.5rem;
+  background: rgb(214, 33, 96);
+}
+
+#delete-post:hover {
+  color: rgb(252, 193, 242);
 }

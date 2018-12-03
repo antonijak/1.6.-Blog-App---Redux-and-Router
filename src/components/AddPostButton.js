@@ -1,18 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./AddPostButton.css";
 
 const AddPostButton = props => {
-  console.log("button", props);
-
   return (
-    <button
-      className="main-button"
-      id={props.id}
-      onClick={() => {
-        props.handleClick();
-      }}
-    >
-      {props.title}
+    <button className="add-post-button" id={props.id}>
+      <span id="plus">+</span> ADD POST
     </button>
   );
 };
@@ -20,6 +13,5 @@ const AddPostButton = props => {
 export default AddPostButton;
 
 AddPostButton.propTypes = {
-  id: PropTypes.string,
-  title: PropTypes.string
+  id: PropTypes.string
 };

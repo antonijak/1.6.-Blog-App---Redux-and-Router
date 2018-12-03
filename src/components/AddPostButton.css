@@ -1,0 +1,31 @@
+.add-post-button {
+  color: black;
+  padding: 0.7rem 1.5rem;
+  height: 3rem;
+  width: 10rem;
+  line-height: 0.7rem;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  text-align: center;
+  background: var(--main-button-color);
+  color: white;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  outline: none;
+  cursor: pointer;
+}
+
+.add-post-button:hover {
+  color: rgb(202, 172, 255);
+}
+
+#plus {
+  font-size: 1.6rem;
+  font-weight: normal;
+}

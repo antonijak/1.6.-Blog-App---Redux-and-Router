@@ -6,7 +6,7 @@ import Avatar from "./Avatar";
 const PostItem = props => {
   return (
     <div className="post-item">
-      <PostImage imageDescription="some pic" />
+      <PostImage imageDescription="some pic" imageSource={props.imageSource} />
       <h3 className="post-item-title">{props.title}</h3>
       <div className="category-container">
         <div className="author">

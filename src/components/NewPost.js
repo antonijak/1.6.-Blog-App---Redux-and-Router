@@ -6,8 +6,6 @@ import "./NewPost.css";
 import CustomDropdown from "./CustomDropdown";
 
 const NewPost = props => {
-  console.log(props);
-
   return (
     <div className="add-new-post">
       <div className="title-and-category">
@@ -16,7 +14,7 @@ const NewPost = props => {
           type="text"
           name="title"
           id="new-post-title"
-          placeholder="Your title here"
+          placeholder="Your title here*"
           value={props.newPost.title}
           onChange={e => {
             props.handleInput(e);
@@ -27,13 +25,24 @@ const NewPost = props => {
           id="select-category"
           handleInput={props.handleInput}
         />
+        <input
+          type="url"
+          name="image"
+          className="input-default"
+          placeholder="Image url"
+          id="image-input"
+          value={props.newPost.image}
+          onChange={e => {
+            props.handleInput(e);
+          }}
+        />
       </div>
       <div className="textarea-container">
         <textarea
           name="text"
           id="new-post-text"
-          rows="20"
-          placeholder="Write new post"
+          rows="16"
+          placeholder="Write new post*"
           value={props.newPost.text}
           onChange={e => {
             props.handleInput(e);
@@ -42,11 +51,7 @@ const NewPost = props => {
       </div>
       <div className="new-post-buttons-container">
         <Link to="/posts">
-          <AddPostButton
-            title="Save"
-            id="save-new-post"
-            handleClick={props.addPost}
-          />
+          <Button title="Save" id="save-new-post" handleClick={props.addPost} />
         </Link>
 
         <Link to="/posts">
