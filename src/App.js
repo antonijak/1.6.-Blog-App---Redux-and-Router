@@ -5,85 +5,24 @@ import PostPreview from "./components/PostPreview";
 import NewPost from "./components/NewPost";
 import NoMatch from "./components/NoMatch";
 import require from "uuid";
+import { Route, Link, Switch, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actions from "./actions/actions";
 import "./App.css";
-import { Route, Link, Switch } from "react-router-dom";
-
-let id1 = require("uuid/v4");
-let id2 = require("uuid/v4");
 
 class App extends Component {
-  state = {
-    posts: [
-      {
-        title: "My day in Integrify",
-        category: "Work",
-        id: id1.toString(),
-        image: "https://picsum.photos/500/300",
-        text:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-      },
-      {
-        title: "My talk at React Meetup",
-        category: "Speech",
-        id: id2.toString(),
-        image: "https://picsum.photos/700/300",
-        text:
-          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-      },
-      {
-        title: "It is a long established fact that a reader will be distracted",
-        category: "Some category",
-        id: "2",
-        image: "https://picsum.photos/600/300",
-        text:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting. Remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting. Remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting. Remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-      },
-      {
-        title: "This is one long title for blog",
-        category: "Recreation",
-        id: "1",
-        image: "https://picsum.photos/400/300",
-        text:
-          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-      },
-      {
-        title: "This is one long title for blog",
-        category: "Recreation",
-        id: "1",
-        image: "https://picsum.photos/800/300",
-        text:
-          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-      },
-      {
-        title: "This is one long title for blog",
-        category: "Recreation",
-        id: "1",
-        image: "https://picsum.photos/900/300",
-        text:
-          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-      }
-    ],
-    newPost: {
-      title: "",
-      category: "Work",
-      image: "",
-      text: ""
-    }
-  };
-
   handleInput = e => {
     let target = e.target;
     let name = target.name;
     let value = target.value;
-    this.setState({ newPost: { ...this.state.newPost, [name]: value } });
-    console.log(name, value);
+    this.props.takeInputValues(value, name);
   };
 
   addPost = () => {
-    let title = this.state.newPost.title;
-    let category = this.state.newPost.category;
-    let text = this.state.newPost.text;
-    let image = this.state.newPost.image;
+    let title = this.props.newPost.title;
+    let category = this.props.newPost.category;
+    let text = this.props.newPost.text;
+    let image = this.props.newPost.image;
     let id = require("uuid/v4");
     if (
       image === "" ||
@@ -95,22 +34,23 @@ class App extends Component {
     }
 
     if (title !== "" && category !== "" && text !== "") {
-      this.setState({
-        posts: [...this.state.posts, { title, category, id, image, text }],
-        newPost: { title: "", category: "Work", text: "", image: "" }
+      this.props.addPost({ title, category, id, image, text });
+      this.props.clearInputValues({
+        title: "",
+        category: "Recreation",
+        text: "",
+        image: ""
       });
     }
   };
 
   deletePost = id => {
-    let newPosts = this.state.posts.filter(post => {
+    let newPosts = this.props.posts.filter(post => {
       let validPost;
       post.id !== id && (validPost = post);
       return validPost;
     });
-    this.setState({
-      posts: newPosts
-    });
+    this.props.deletePost(newPosts);
   };
 
   render() {
@@ -134,7 +74,7 @@ class App extends Component {
             exact
             path="/posts"
             render={() => (
-              <Posts posts={this.state.posts} deletePost={this.deletePost} />
+              <Posts posts={this.props.posts} deletePost={this.deletePost} />
             )}
           />
 
@@ -146,7 +86,7 @@ class App extends Component {
                 {...props}
                 addPost={this.addPost}
                 handleInput={this.handleInput}
-                newPost={this.state.newPost}
+                newPost={this.props.newPost}
               />
             )}
           />
@@ -157,7 +97,7 @@ class App extends Component {
               <PostPreview
                 {...props}
                 deletePost={this.deletePost}
-                posts={this.state.posts}
+                posts={this.props.posts}
               />
             )}
           />
@@ -169,4 +109,26 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    posts: state.posts,
+    newPost: state.newPost
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addPost: post => dispatch(actions.addPost(post)),
+    deletePost: posts => dispatch(actions.deletePost(posts)),
+    takeInputValues: (value, name) =>
+      dispatch(actions.takeInputValues(value, name)),
+    clearInputValues: post => dispatch(actions.clearInputValues(post))
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);

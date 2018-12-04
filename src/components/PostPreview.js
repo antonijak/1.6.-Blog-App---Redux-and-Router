@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "./Button";
 import DeleteButton from "./DeleteButton";
 import "./PostPreview.css";
@@ -37,4 +37,4 @@ const PostPreview = props => {
   );
 };
 
-export default withRouter(PostPreview);
+export default PostPreview;
