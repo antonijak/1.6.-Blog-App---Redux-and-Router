@@ -6,7 +6,7 @@ let initialState = {
       title: "My day in Integrify",
       category: "Work",
       id: "22",
-      image: "https://picsum.photos/500/300",
+      image: "http://placeimg.com/640/310/any",
       text:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
@@ -14,7 +14,7 @@ let initialState = {
       title: "Lorem ipsum dolor sit amet",
       category: "Work",
       id: "32",
-      image: "https://picsum.photos/600/300",
+      image: "http://placeimg.com/640/200/any",
       text:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
@@ -22,7 +22,7 @@ let initialState = {
       title: "Lorem Ipsum is simply dummy text of the printing",
       category: "Work",
       id: "42",
-      image: "https://picsum.photos/700/300",
+      image: "http://placeimg.com/700/400/any",
       text:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     }
@@ -32,7 +32,9 @@ let initialState = {
     category: "Work",
     image: "",
     text: ""
-  }
+  },
+  isComingFromEdit: false,
+  postToEditId: ""
 };
 
 const reducer = (state = initialState, action) => {
@@ -47,9 +49,18 @@ const reducer = (state = initialState, action) => {
       let value = action.payload.value;
       let name = action.payload.name;
       return { ...state, newPost: { ...state.newPost, [name]: value } };
-    case actionTypes.CLEAR_INPUT_VALUES:
+    case actionTypes.CHANGE_INPUT_VALUES:
       post = action.payload;
       return { ...state, newPost: post };
+    case actionTypes.EMPTY_INPUT_VALUES:
+      post = action.payload;
+      return { ...state, newPost: post };
+    case actionTypes.EDITING:
+      return {
+        ...state,
+        isComingFromEdit: action.payload.bool,
+        postToEditId: action.payload.postId
+      };
     default:
       return state;
   }

@@ -69,6 +69,6 @@
 .buttons-container {
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 1.5rem 0;
+  justify-content: flex-end;
+  padding-top: 1.5rem;
 }

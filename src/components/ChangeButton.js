@@ -13,7 +13,7 @@ const DeleteButton = props => {
         props.handleClick(props.postId);
       }}
     >
-      Delete
+      {props.title}
     </button>
   );
 };

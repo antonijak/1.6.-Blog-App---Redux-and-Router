@@ -24,9 +24,31 @@ export const takeInputValues = (value, name) => {
   };
 };
 
-export const clearInputValues = post => {
+export const changeInputValues = post => {
   return {
-    type: actionTypes.CLEAR_INPUT_VALUES,
+    type: actionTypes.CHANGE_INPUT_VALUES,
     payload: post
+  };
+};
+
+export const emptyInputValues = () => {
+  return {
+    type: actionTypes.EMPTY_INPUT_VALUES,
+    payload: {
+      title: "",
+      category: "Recreation",
+      text: "",
+      image: ""
+    }
+  };
+};
+
+export const isEditing = (bool, postId) => {
+  return {
+    type: actionTypes.EDITING,
+    payload: {
+      bool,
+      postId
+    }
   };
 };

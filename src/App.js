@@ -23,33 +23,60 @@ class App extends Component {
     let category = this.props.newPost.category;
     let text = this.props.newPost.text;
     let image = this.props.newPost.image;
-    let id = require("uuid/v4");
+
     if (
       image === "" ||
       !image.match(
         /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/
       )
     ) {
-      image = "https://picsum.photos/500/300";
+      image = "http://placeimg.com/800/500/any";
     }
+    if (this.props.isComingFromEdit) {
+      this.editPost(title, category, text, image);
+    } else {
+      let id = require("uuid/v4");
 
-    if (title !== "" && category !== "" && text !== "") {
-      this.props.addPost({ title, category, id, image, text });
-      this.props.clearInputValues({
-        title: "",
-        category: "Recreation",
-        text: "",
-        image: ""
-      });
+      if (title !== "" && category !== "" && text !== "") {
+        this.props.addPost({ title, category, id, image, text });
+        this.props.emptyInputValues();
+      }
     }
   };
 
-  deletePost = id => {
-    let newPosts = this.props.posts.filter(post => {
-      let validPost;
-      post.id !== id && (validPost = post);
-      return validPost;
+  editPost = (title, category, text, image) => {
+    let id = this.props.postToEditId;
+
+    if (title !== "" && category !== "" && text !== "") {
+      let newPosts = this.props.posts.map(post => {
+        if (post.id === id) {
+          return { title, category, image, text, id };
+        } else {
+          return post;
+        }
+      });
+
+      this.props.deletePost(newPosts);
+      this.props.emptyInputValues();
+    }
+  };
+
+  setCreatingNotEditing = value => {
+    this.props.isEditing(value);
+    this.props.emptyInputValues();
+  };
+
+  providePostToEdit = id => {
+    this.props.posts.filter(post => {
+      if (post.id === id) {
+        this.props.changeInputValues(post);
+        this.props.isEditing(true, post.id);
+      }
     });
+  };
+
+  deletePost = id => {
+    let newPosts = this.props.posts.filter(post => post.id !== id);
     this.props.deletePost(newPosts);
   };
 
@@ -74,7 +101,11 @@ class App extends Component {
             exact
             path="/posts"
             render={() => (
-              <Posts posts={this.props.posts} deletePost={this.deletePost} />
+              <Posts
+                posts={this.props.posts}
+                deletePost={this.deletePost}
+                setCreatingNotEditing={this.setCreatingNotEditing}
+              />
             )}
           />
 
@@ -97,6 +128,7 @@ class App extends Component {
               <PostPreview
                 {...props}
                 deletePost={this.deletePost}
+                providePostToEdit={this.providePostToEdit}
                 posts={this.props.posts}
               />
             )}
@@ -112,7 +144,9 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     posts: state.posts,
-    newPost: state.newPost
+    newPost: state.newPost,
+    isComingFromEdit: state.isComingFromEdit,
+    postToEditId: state.postToEditId
   };
 };
 
@@ -122,7 +156,9 @@ const mapDispatchToProps = dispatch => {
     deletePost: posts => dispatch(actions.deletePost(posts)),
     takeInputValues: (value, name) =>
       dispatch(actions.takeInputValues(value, name)),
-    clearInputValues: post => dispatch(actions.clearInputValues(post))
+    changeInputValues: post => dispatch(actions.changeInputValues(post)),
+    emptyInputValues: () => dispatch(actions.emptyInputValues()),
+    isEditing: (bool, id) => dispatch(actions.isEditing(bool, id))
   };
 };
 

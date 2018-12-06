@@ -1,19 +1,17 @@
 .main-button {
+  width: 8rem;
   padding: 0.8rem 2rem;
+  border: none;
   border-radius: 3px;
+  background: var(--main-button-color);
   font-size: 1rem;
   letter-spacing: 3px;
-  background: white;
   -webkit-transition: box-shadow 0.5s;
   box-shadow: 0 2px 5px rgba(14, 14, 14, 0.4);
-  border: none;
-  width: 8rem;
   outline: none;
-  background: var(--main-button-color);
   color: white;
   font-weight: 500;
   cursor: pointer;
-  border: none;
 }
 
 .main-button:hover {
@@ -31,12 +29,21 @@
 }
 
 #back-to-posts:hover {
-  color: rgb(125, 50, 255);
+  color: rgb(141, 75, 255);
 }
 
 #delete-post {
-  margin-top: 1.5rem;
-  background: rgb(214, 33, 96);
+  background: rgb(233, 72, 129);
+}
+
+#edit-post {
+  margin-right: 1.5rem;
+  background: white;
+  color: var(--main-button-color);
+}
+
+#edit-post:hover {
+  color: rgb(141, 75, 255);
 }
 
 #delete-post:hover {

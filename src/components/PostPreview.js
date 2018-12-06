@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
-import DeleteButton from "./DeleteButton";
+import ChangeButton from "./ChangeButton";
 import "./PostPreview.css";
 
 const PostPreview = props => {
@@ -24,14 +24,24 @@ const PostPreview = props => {
         </div>
 
         <p className="post-text">{post.text}</p>
-        <Link to="/posts">
-          <DeleteButton
-            id="delete-post"
-            handleClick={props.deletePost}
-            postId={post.id}
-            title="Delete Post"
-          />
-        </Link>
+        <div className="buttons-container">
+          <Link to="/posts/newpost">
+            <ChangeButton
+              id="edit-post"
+              handleClick={props.providePostToEdit}
+              postId={post.id}
+              title="Edit"
+            />
+          </Link>
+          <Link to="/posts">
+            <ChangeButton
+              id="delete-post"
+              handleClick={props.deletePost}
+              postId={post.id}
+              title="Delete"
+            />
+          </Link>
+        </div>
       </div>
     </div>
   );

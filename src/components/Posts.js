@@ -5,10 +5,15 @@ import { Link } from "react-router-dom";
 import "./Posts.css";
 
 const Posts = props => {
+  console.log(props);
+
   return (
     <div className="posts">
       <Link to="/posts/newpost" id="add-post-button">
-        <AddPostButton title="ADD POST" />
+        <AddPostButton
+          title="ADD POST"
+          handleClick={props.setCreatingNotEditing}
+        />
       </Link>
 
       {props.posts.map((post, i) => (
