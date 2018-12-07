@@ -15,21 +15,22 @@ const Posts = props => {
           handleClick={props.setCreatingNotEditing}
         />
       </Link>
-
-      {props.posts.map((post, i) => (
-        <Link
-          to={"/posts/" + post.id}
-          className="post-item-container"
-          key={i + "key"}
-        >
-          <PostItem
-            title={post.title}
-            category={post.category}
-            id={post.id}
-            imageSource={post.image}
-          />
-        </Link>
-      ))}
+      <div className="post-list-container">
+        {props.posts.map((post, i) => (
+          <Link
+            to={"/posts/" + post.id}
+            className="post-item-container"
+            key={i + "key"}
+          >
+            <PostItem
+              title={post.title}
+              category={post.category}
+              id={post.id}
+              imageSource={post.image}
+            />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
