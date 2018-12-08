@@ -4,6 +4,11 @@
   font-family: "Roboto", sans-serif;
 }
 
+body {
+  background: var(--main-backgound-color);
+  width: 100%;
+}
+
 :root {
   --main-border-color: rgb(228, 228, 228);
   --nav-border-color: rgb(188, 188, 188);
@@ -16,19 +21,9 @@
   --second-text-color: rgb(105, 105, 105);
 }
 
-body {
-  background: var(--main-backgound-color);
-}
-
 @media only screen and (min-width: 1440px) {
   body {
     width: 1440px;
     margin: 0 auto;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  body {
-    min-width: 375px;
   }
 }
