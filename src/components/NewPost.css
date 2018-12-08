@@ -12,7 +12,6 @@
   width: 100%;
   margin-bottom: 1.5rem;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -24,7 +23,6 @@ input {
   line-height: 1rem;
   padding: 1rem;
   width: 81.9%;
-  margin-right: 1.5rem;
 }
 
 .input-default {
@@ -43,8 +41,8 @@ input {
 }
 
 #new-post-title {
-  margin-right: 1rem;
   font-size: 1rem;
+  margin-right: 1.5rem;
 }
 
 #select-category {
@@ -52,7 +50,7 @@ input {
 }
 
 #image-input {
-  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   width: 100%;
   margin-right: 0;
 }
@@ -75,6 +73,8 @@ input {
 .new-post-buttons-container {
   width: 100%;
   margin: 1.5rem 0;
+  display: flex;
+  justify-content: flex-end;
 }
 
 #save-new-post {
@@ -82,7 +82,6 @@ input {
 }
 
 #cancel-new-post {
-  margin-right: 1.5rem;
   background: white;
   color: var(--main-button-color);
 }
@@ -90,13 +89,53 @@ input {
 #cancel-new-post:hover {
   color: rgb(123, 78, 238);
 }
-/* 
-.red {
-  background: #fbe9e7;
-  border-bottom: 2px solid white;
+
+@media only screen and (max-width: 1024px) {
+  .add-new-post {
+    width: 90%;
+    padding: 0 5%;
+  }
 }
 
-.red:focus {
-  border-bottom: 2px solid rgb(252, 55, 55);
-  background: #fbe9e7;
-} */
+@media only screen and (max-width: 650px) {
+  .add-new-post {
+    width: 99%;
+  }
+
+  .title-and-category {
+    height: fit-content;
+    justify-content: flex-end;
+  }
+
+  #new-post-title {
+    width: 100%;
+    height: fit-content;
+    margin-right: 0;
+    margin-top: 4.5rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .title-and-category {
+    flex-wrap: wrap;
+  }
+
+  .new-post-buttons-container {
+    flex-wrap: wrap;
+  }
+
+  .new-post-buttons-container a {
+    width: 100%;
+  }
+
+  #save-new-post {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  #cancel-new-post {
+    width: 100%;
+    padding: 1rem 0;
+  }
+}

@@ -9,8 +9,8 @@ const PostPreview = props => {
     return post.id === props.match.params.id && post;
   });
   return (
-    <div className="post-preview">
-      <Link to="/posts">
+    <article className="post-preview">
+      <Link to="/posts" id="back-to-posts-link">
         <Button title="Back to Posts" id="back-to-posts" />
       </Link>
 
@@ -18,12 +18,14 @@ const PostPreview = props => {
         <div className="post-image-container">
           <img src={post.image} className="post-preview-image" alt="post-pic" />
         </div>
+
         <div className="title-and-category-container">
           <h2 className="post-title">{post.title}</h2>
           <span className="post-category">{post.category}</span>
         </div>
 
         <p className="post-text">{post.text}</p>
+
         <div className="buttons-container">
           <Link to="/posts/newpost">
             <ChangeButton
@@ -33,6 +35,7 @@ const PostPreview = props => {
               title="Edit"
             />
           </Link>
+
           <Link to="/posts">
             <ChangeButton
               id="delete-post"
@@ -43,7 +46,7 @@ const PostPreview = props => {
           </Link>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

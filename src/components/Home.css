@@ -1,6 +1,5 @@
 #home {
   display: flex;
-  padding: 2rem;
   flex-direction: column;
   justify-content: center;
 }
@@ -8,7 +7,15 @@
 #home-main-title {
   text-align: center;
   padding: 2rem;
+  color: var(--main-text-color);
 }
-#home-main-text {
-  text-align: center;
+
+#blog-picture-link {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#blog-picture {
+  width: 100%;
+  border-radius: 2px;
 }

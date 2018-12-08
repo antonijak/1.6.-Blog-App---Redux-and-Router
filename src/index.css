@@ -19,3 +19,16 @@
 body {
   background: var(--main-backgound-color);
 }
+
+@media only screen and (min-width: 1440px) {
+  body {
+    width: 1440px;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  body {
+    min-width: 375px;
+  }
+}

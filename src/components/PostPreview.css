@@ -1,7 +1,7 @@
 .post-preview {
   display: flex;
   flex-wrap: wrap;
-  width: 70%;
+  width: 80%;
   margin: auto;
   padding-top: 1.5rem;
   justify-content: flex-end;
@@ -71,4 +71,48 @@
   display: flex;
   justify-content: flex-end;
   padding-top: 1.5rem;
+}
+
+@media only screen and (max-width: 1224px) {
+  .post-preview {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .post-preview {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #back-to-posts-link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  #back-to-posts {
+    text-align: center;
+  }
+
+  .title-and-category-container {
+    flex-wrap: wrap;
+  }
+
+  .post-title {
+    padding-bottom: 0;
+  }
+
+  .buttons-container {
+    flex-wrap: wrap;
+  }
+
+  .buttons-container a {
+    width: 100%;
+  }
+
+  .post-image-container {
+    height: 15rem;
+  }
 }

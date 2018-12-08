@@ -27,13 +27,6 @@
   display: block;
 }
 
-@media only screen and (min-width: 1440px) {
-  body {
-    width: 1440px;
-    margin: 0 auto;
-  }
-}
-
 @media only screen and (max-width: 1024px) {
   html {
     font-size: 14px;
@@ -50,26 +43,15 @@
 }
 
 @media only screen and (max-width: 650px) {
-  html {
-    font-size: 12px;
-  }
-
   .posts {
-    margin: 0.8rem auto 0;
+    margin: 0 auto;
   }
 
   #add-post-button {
-    margin: 0.5rem 0 1.3rem;
+    margin: 1.5rem 0 1.5rem;
   }
 
   .post-list-container {
     grid-template-columns: minmax(300px, 1fr);
-    grid-row-gap: 0.8rem;
-  }
-}
-
-@media only screen and (max-width: 411px) {
-  body {
-    min-width: 400px;
   }
 }

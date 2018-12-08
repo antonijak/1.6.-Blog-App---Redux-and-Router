@@ -4,11 +4,13 @@ import "./PostImage.css";
 
 const PostImage = props => {
   return (
-    <img
-      src={props.imageSource}
-      alt={props.imageDescription}
-      className="post-image"
-    />
+    <figure className="post-item-image-container">
+      <img
+        src={props.imageSource}
+        alt={props.imageDescription}
+        className="post-image"
+      />
+    </figure>
   );
 };
 

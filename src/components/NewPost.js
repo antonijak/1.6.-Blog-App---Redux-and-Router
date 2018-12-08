@@ -25,18 +25,19 @@ const NewPost = props => {
           id="select-category"
           handleInput={props.handleInput}
         />
-        <input
-          type="url"
-          name="image"
-          className="input-default"
-          placeholder="Image url"
-          id="image-input"
-          value={props.newPost.image}
-          onChange={e => {
-            props.handleInput(e);
-          }}
-        />
       </div>
+      <input
+        type="url"
+        name="image"
+        className="input-default"
+        placeholder="Image url"
+        id="image-input"
+        value={props.newPost.image}
+        onChange={e => {
+          props.handleInput(e);
+        }}
+      />
+
       <div className="textarea-container">
         <textarea
           name="text"
