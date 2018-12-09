@@ -86,11 +86,18 @@ class App extends Component {
         <nav id="main-nav">
           <ul id="main-nav-ul">
             <li>
-              <Link to="/">HOME</Link>
+              <Link to="/" onClick={() => this.props.showTooltip("invisible")}>
+                HOME
+              </Link>
             </li>
 
             <li>
-              <Link to="/posts">POSTS</Link>
+              <Link
+                to="/posts"
+                onClick={() => this.props.showTooltip("invisible")}
+              >
+                POSTS
+              </Link>
             </li>
           </ul>
         </nav>

@@ -6,10 +6,10 @@ import CustomDropdown from "./CustomDropdown";
 import Tooltip from "./Tooltip";
 
 const NewPost = props => {
-  let validate =
+  let notValid =
     props.newPost.title !== "" && props.newPost.text !== "" ? false : true;
 
-  !validate && props.showTooltip("invisible");
+  !notValid && props.showTooltip("invisible");
   return (
     <div className="add-new-post">
       <div className="title-and-category">
@@ -57,7 +57,7 @@ const NewPost = props => {
       <div
         className="new-post-buttons-container"
         onMouseOver={() => {
-          if (validate) {
+          if (notValid) {
             props.showTooltip("visible");
           } else {
             props.showTooltip("invisible");
@@ -74,11 +74,11 @@ const NewPost = props => {
             title="Save"
             id="save-new-post"
             handleClick={props.addPost}
-            disabled={validate}
+            disabled={notValid}
           />
         </Link>
 
-        <Link to="/posts">
+        <Link to="/posts" onClick={() => this.props.showTooltip("invisible")}>
           <Button title="Cancel" id="cancel-new-post" />
         </Link>
       </div>
