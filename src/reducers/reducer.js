@@ -34,7 +34,8 @@ let initialState = {
     text: ""
   },
   isComingFromEdit: false,
-  postToEditId: ""
+  postToEditId: "",
+  tooltip: "invisible"
 };
 
 const reducer = (state = initialState, action) => {
@@ -61,6 +62,8 @@ const reducer = (state = initialState, action) => {
         isComingFromEdit: action.payload.bool,
         postToEditId: action.payload.postId
       };
+    case actionTypes.SHOW_TOOLTIP:
+      return { ...state, tooltip: action.payload };
     default:
       return state;
   }

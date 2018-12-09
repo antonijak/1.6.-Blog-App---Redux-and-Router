@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
-import AddPostButton from "./AddPostButton";
 import "./NewPost.css";
 import CustomDropdown from "./CustomDropdown";
+import Tooltip from "./Tooltip";
 
 const NewPost = props => {
+  let validate =
+    props.newPost.title !== "" && props.newPost.text !== "" ? false : true;
+
+  !validate && props.showTooltip("invisible");
   return (
     <div className="add-new-post">
       <div className="title-and-category">
@@ -50,9 +54,28 @@ const NewPost = props => {
           }}
         />
       </div>
-      <div className="new-post-buttons-container">
+      <div
+        className="new-post-buttons-container"
+        onMouseOver={() => {
+          if (validate) {
+            props.showTooltip("visible");
+          } else {
+            props.showTooltip("invisible");
+          }
+        }}
+      >
+        <Tooltip
+          id="tooltip"
+          text="To publish new post you must fill both title and post body"
+          className={props.tooltip}
+        />
         <Link to="/posts">
-          <Button title="Save" id="save-new-post" handleClick={props.addPost} />
+          <Button
+            title="Save"
+            id="save-new-post"
+            handleClick={props.addPost}
+            disabled={validate}
+          />
         </Link>
 
         <Link to="/posts">

@@ -10,7 +10,7 @@
 
 .title-and-category {
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
   display: flex;
   justify-content: space-between;
 }
@@ -72,9 +72,10 @@ input {
 
 .new-post-buttons-container {
   width: 100%;
-  margin: 1.5rem 0;
+  padding: 1.5rem 0;
   display: flex;
   justify-content: flex-end;
+  position: relative;
 }
 
 #save-new-post {

@@ -21,9 +21,9 @@ body {
   --second-text-color: rgb(105, 105, 105);
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1414px) {
   body {
-    width: 1440px;
+    width: 1414px;
     margin: 0 auto;
   }
 }

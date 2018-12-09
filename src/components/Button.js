@@ -4,7 +4,12 @@ import "./Button.css";
 
 const Button = props => {
   return (
-    <button className="main-button" id={props.id} onClick={props.handleClick}>
+    <button
+      className="main-button"
+      id={props.id}
+      onClick={props.handleClick}
+      disabled={props.disabled}
+    >
       {props.title}
     </button>
   );

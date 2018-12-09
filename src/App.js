@@ -18,7 +18,7 @@ class App extends Component {
     this.props.takeInputValues(value, name);
   };
 
-  addPost = () => {
+  addPost = ({ history }) => {
     let title = this.props.newPost.title;
     let category = this.props.newPost.category;
     let text = this.props.newPost.text;
@@ -118,6 +118,8 @@ class App extends Component {
                 addPost={this.addPost}
                 handleInput={this.handleInput}
                 newPost={this.props.newPost}
+                showTooltip={this.props.showTooltip}
+                tooltip={this.props.tooltip}
               />
             )}
           />
@@ -146,7 +148,8 @@ const mapStateToProps = state => {
     posts: state.posts,
     newPost: state.newPost,
     isComingFromEdit: state.isComingFromEdit,
-    postToEditId: state.postToEditId
+    postToEditId: state.postToEditId,
+    tooltip: state.tooltip
   };
 };
 
@@ -158,7 +161,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.takeInputValues(value, name)),
     changeInputValues: post => dispatch(actions.changeInputValues(post)),
     emptyInputValues: () => dispatch(actions.emptyInputValues()),
-    isEditing: (bool, id) => dispatch(actions.isEditing(bool, id))
+    isEditing: (bool, id) => dispatch(actions.isEditing(bool, id)),
+    showTooltip: className => dispatch(actions.showTooltip(className))
   };
 };
 

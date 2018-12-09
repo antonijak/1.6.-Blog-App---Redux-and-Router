@@ -52,3 +52,10 @@ export const isEditing = (bool, postId) => {
     }
   };
 };
+
+export const showTooltip = className => {
+  return {
+    type: actionTypes.SHOW_TOOLTIP,
+    payload: className
+  };
+};
