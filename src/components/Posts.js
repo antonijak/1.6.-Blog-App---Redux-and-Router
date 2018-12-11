@@ -1,22 +1,32 @@
 import React from "react";
-import AddPostButton from "./AddPostButton";
+import Button from "./Button";
 import PostItem from "./PostItem";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import "./Posts.css";
 
 const Posts = props => {
-  console.log(props);
-
+  let reversedPosts = [...props.posts].reverse();
   return (
     <div className="posts">
-      <Link to="/posts/newpost" id="add-post-button">
-        <AddPostButton
+      <Link
+        to="/posts/newpost"
+        id="add-post-button"
+        onClick={() => {
+          props.showTooltip("invisible");
+        }}
+      >
+        <Button
           title="ADD POST"
           handleClick={props.setCreatingNotEditing}
+          className="add-post-button"
+          value={false}
+          plus="+"
+          plusId="plus"
         />
       </Link>
       <div className="post-list-container">
-        {props.posts.map((post, i) => (
+        {reversedPosts.map((post, i) => (
           <Link
             to={"/posts/" + post.id}
             className="post-item-container"
@@ -36,3 +46,9 @@ const Posts = props => {
 };
 
 export default Posts;
+
+Posts.propTypes = {
+  posts: PropTypes.array,
+  showTooltip: PropTypes.func,
+  setCreatingNotEditing: PropTypes.func
+};

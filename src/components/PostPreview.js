@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
-import ChangeButton from "./ChangeButton";
+import BackButton from "./BackButton";
 import "./PostPreview.css";
 
 const PostPreview = props => {
@@ -11,7 +11,11 @@ const PostPreview = props => {
   return (
     <article className="post-preview">
       <Link to="/posts" id="back-to-posts-link">
-        <Button title="Back to Posts" id="back-to-posts" />
+        <BackButton
+          title="Back to Posts"
+          id="back-to-posts"
+          className="main-button"
+        />
       </Link>
 
       <div className="post-body">
@@ -28,20 +32,22 @@ const PostPreview = props => {
 
         <div className="buttons-container">
           <Link to="/posts/newpost">
-            <ChangeButton
+            <Button
               id="edit-post"
               handleClick={props.providePostToEdit}
-              postId={post.id}
+              value={post.id}
               title="Edit"
+              className="main-button"
             />
           </Link>
 
           <Link to="/posts">
-            <ChangeButton
+            <Button
               id="delete-post"
               handleClick={props.deletePost}
-              postId={post.id}
+              value={post.id}
               title="Delete"
+              className="main-button"
             />
           </Link>
         </div>

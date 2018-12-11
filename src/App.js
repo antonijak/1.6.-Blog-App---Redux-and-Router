@@ -16,14 +16,23 @@ class App extends Component {
     let name = target.name;
     let value = target.value;
     this.props.takeInputValues(value, name);
+    this.validateInputs();
   };
 
-  addPost = ({ history }) => {
+  validateInputs = () => {
     let title = this.props.newPost.title;
-    let category = this.props.newPost.category;
     let text = this.props.newPost.text;
-    let image = this.props.newPost.image;
+    if (title !== "" && text !== "") {
+      this.props.showTooltip("invisible");
+      return true;
+    } else {
+      this.props.showTooltip("visible");
+      return false;
+    }
+  };
 
+  validateImage = () => {
+    let image = this.props.newPost.image;
     if (
       image === "" ||
       !image.match(
@@ -32,19 +41,26 @@ class App extends Component {
     ) {
       image = "http://placeimg.com/800/500/any";
     }
-    if (this.props.isComingFromEdit) {
-      this.editPost(title, category, text, image);
-    } else {
-      let id = require("uuid/v4");
+    return image;
+  };
 
-      if (title !== "" && category !== "" && text !== "") {
-        this.props.addPost({ title, category, id, image, text });
-        this.props.emptyInputValues();
-      }
+  addNewPost = () => {
+    let title = this.props.newPost.title;
+    let category = this.props.newPost.category;
+    let text = this.props.newPost.text;
+    let image = this.validateImage();
+    let id = require("uuid/v4");
+
+    if (!this.props.isComingFromEdit) {
+      this.props.addPost({ title, category, id, image, text });
+      this.props.emptyInputValues();
+    } else {
+      this.editPost(title, category, text, image);
     }
   };
 
   editPost = (title, category, text, image) => {
+    this.validateInputs();
     let id = this.props.postToEditId;
 
     if (title !== "" && category !== "" && text !== "") {
@@ -86,18 +102,11 @@ class App extends Component {
         <nav id="main-nav">
           <ul id="main-nav-ul">
             <li>
-              <Link to="/" onClick={() => this.props.showTooltip("invisible")}>
-                HOME
-              </Link>
+              <Link to="/">HOME</Link>
             </li>
 
             <li>
-              <Link
-                to="/posts"
-                onClick={() => this.props.showTooltip("invisible")}
-              >
-                POSTS
-              </Link>
+              <Link to="/posts">POSTS</Link>
             </li>
           </ul>
         </nav>
@@ -112,6 +121,7 @@ class App extends Component {
                 posts={this.props.posts}
                 deletePost={this.deletePost}
                 setCreatingNotEditing={this.setCreatingNotEditing}
+                showTooltip={this.props.showTooltip}
               />
             )}
           />
@@ -122,11 +132,12 @@ class App extends Component {
             render={props => (
               <NewPost
                 {...props}
-                addPost={this.addPost}
+                addNewPost={this.addNewPost}
                 handleInput={this.handleInput}
                 newPost={this.props.newPost}
                 showTooltip={this.props.showTooltip}
                 tooltip={this.props.tooltip}
+                validateInputs={this.validateInputs}
               />
             )}
           />
