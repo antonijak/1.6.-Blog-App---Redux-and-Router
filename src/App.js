@@ -19,6 +19,13 @@ class App extends Component {
     this.validateInputs();
   };
 
+  handleSubmit = history => {
+    if (this.validateInputs()) {
+      this.addNewPost();
+      history.push("/posts");
+    }
+  };
+
   validateInputs = () => {
     let title = this.props.newPost.title;
     let text = this.props.newPost.text;
@@ -134,6 +141,7 @@ class App extends Component {
                 {...props}
                 addNewPost={this.addNewPost}
                 handleInput={this.handleInput}
+                handleSubmit={this.handleSubmit}
                 newPost={this.props.newPost}
                 showTooltip={this.props.showTooltip}
                 tooltip={this.props.tooltip}
