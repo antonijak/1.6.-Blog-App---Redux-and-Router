@@ -1,12 +1,12 @@
 # Blog App
 
+## See [demo](https://adoring-shockley-6b314f.netlify.com/)
+
 ## Technologies
 
 - React
 - React-Router
 - Redux
-
-## See [demo](https://adoring-shockley-6b314f.netlify.com/)
 
 ## Features
 
