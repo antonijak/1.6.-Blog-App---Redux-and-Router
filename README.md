@@ -14,7 +14,7 @@ Read, write and delete posts.
 
 ## Getting started-
 
-`$ git clone https://github.com/antonijak/presentation-manager.git`
+`$ git clone https://github.com/antonijak/1.6.-Blog-App-Redux-and-Router.git`
 
 `$ cd 1.6.-Blog-App-Redux-and-Router`
 
